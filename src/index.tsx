@@ -4,18 +4,11 @@ import { getByProps } from 'enmity/metro';
 import { create } from 'enmity/patcher';
 import manifest from '../manifest.json';
 
-import Settings from './components/Settings';
+import { Messages } from "enmity/metro/common";
 
-const Typing = getByProps('startTyping');
-const Patcher = create('silent-typing');
-
-const SilentTyping: Plugin = {
-   ...manifest,
-
-   onStart() {
-      Patcher.instead(Typing, 'startTyping', () => { });
-      Patcher.instead(Typing, 'stopTyping', () => { });
-   },
+Patcher.before(Messages, "sendMessage", (_, [, msg]) => {
+  msg.content += "\nEnd of Message"
+}
 
    onStop() {
       Patcher.unpatchAll();
