@@ -1,22 +1,23 @@
 import { Plugin, registerPlugin } from 'enmity/managers/plugins';
-import { React } from 'enmity/metro/common';
+import { React, Messages } from 'enmity/metro/common';
 import { getByProps } from 'enmity/metro';
 import { create } from 'enmity/patcher';
 import manifest from '../manifest.json';
 
-import { Messages } from "enmity/metro/common";
+const Patcher = create("YourPlugin");
 
-Patcher.before(Messages, "sendMessage", (_, [, msg]) => {
-  msg.content += "\n💀💀"
-}
+const YourPlugin: Plugin = {
+   ...manifest,
+
+   onStart() {
+      Patcher.before(Messages, "sendMessage", (_, [, msg]) => {
+        msg.content += "\n💀💀"
+      }
+   },
 
    onStop() {
       Patcher.unpatchAll();
-   },
-
-   getSettingsPanel({ settings }) {
-      return <Settings settings={settings} />;
    }
 };
 
-registerPlugin(SilentTyping);
+registerPlugin(YourPlugin);
