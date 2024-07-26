@@ -1,11 +1,10 @@
 {
-   "name": "SilentTyping",
-   "version": "1.0.0",
-   "description": "Silences your typing indicator.",
+   "name": "Skull",
+   "description": "Adds 💀 to your messages.",
    "authors": [
       {
-         "name": "eternal",
-         "id": "263689920210534400"
+         "name": "darealyeeto",
+         "id": "980160393093730395"
       }
    ]
 }
