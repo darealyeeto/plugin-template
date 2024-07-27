@@ -1,5 +1,6 @@
 {
    "name": "Skull",
+   "color": "#838383",
    "description": "Adds 💀 to your messages.",
    "authors": [
       {
